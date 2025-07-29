@@ -1,4 +1,4 @@
 west:
-  command: /home/apcave/nordic/.venv/bin/west build -b xiao_ble --pristine
+  command: /home/apcave/nordic/.venv/bin/west build -b xiao_ble --pristine -- -DCMAKE_BUILD_TYPE=Debug
   topdir: /home/apcave/nordic
   version: 1.4.0

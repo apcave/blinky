@@ -7,14 +7,14 @@
 
 # =============================================================================
 # Project: blinky
-# Configurations: MinSizeRel
+# Configurations: Debug
 # =============================================================================
 # =============================================================================
 
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__app_MinSizeRel
+rule C_COMPILER__app_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule C_COMPILER__app_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__app_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__app_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -41,7 +41,7 @@ rule CUSTOM_COMMAND
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__zephyr_MinSizeRel
+rule C_COMPILER__zephyr_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -51,7 +51,7 @@ rule C_COMPILER__zephyr_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__zephyr_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__zephyr_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -60,7 +60,7 @@ rule C_STATIC_LIBRARY_LINKER__zephyr_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__offsets_MinSizeRel
+rule C_COMPILER__offsets_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -70,7 +70,7 @@ rule C_COMPILER__offsets_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__zephyr_pre0_MinSizeRel
+rule C_COMPILER__zephyr_pre0_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -80,7 +80,7 @@ rule C_COMPILER__zephyr_pre0_MinSizeRel
 #############################################
 # Rule for linking C executable.
 
-rule C_EXECUTABLE_LINKER__zephyr_pre0_MinSizeRel
+rule C_EXECUTABLE_LINKER__zephyr_pre0_Debug
   command = $PRE_LINK && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $FLAGS $LINK_FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES -L"/home/apcave/stm32-tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp" /home/apcave/nordic/blinky/build/blinky/modules/picolibc/libc.a -lgcc && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
@@ -89,7 +89,7 @@ rule C_EXECUTABLE_LINKER__zephyr_pre0_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__zephyr_final_MinSizeRel
+rule C_COMPILER__zephyr_final_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -99,7 +99,7 @@ rule C_COMPILER__zephyr_final_MinSizeRel
 #############################################
 # Rule for linking C executable.
 
-rule C_EXECUTABLE_LINKER__zephyr_final_MinSizeRel
+rule C_EXECUTABLE_LINKER__zephyr_final_Debug
   command = $PRE_LINK && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $FLAGS $LINK_FLAGS $LINK_FLAGS $in -o $TARGET_FILE $LINK_PATH $LINK_LIBRARIES -L"/home/apcave/stm32-tools/bin/../lib/gcc/arm-none-eabi/12.3.1/thumb/v7e-m/nofp" /home/apcave/nordic/blinky/build/blinky/modules/picolibc/libc.a -lgcc && $POST_BUILD
   description = Linking C executable $TARGET_FILE
   restat = $RESTAT
@@ -108,7 +108,7 @@ rule C_EXECUTABLE_LINKER__zephyr_final_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__arch__common_MinSizeRel
+rule C_COMPILER__arch__common_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -118,7 +118,7 @@ rule C_COMPILER__arch__common_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__arch__common_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__arch__common_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -127,7 +127,7 @@ rule C_STATIC_LIBRARY_LINKER__arch__common_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__isr_tables_MinSizeRel
+rule C_COMPILER__isr_tables_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -137,7 +137,7 @@ rule C_COMPILER__isr_tables_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__isr_tables_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__isr_tables_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -146,7 +146,7 @@ rule C_STATIC_LIBRARY_LINKER__isr_tables_MinSizeRel
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__arch__arm__core_MinSizeRel
+rule ASM_COMPILER__arch__arm__core_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -156,7 +156,7 @@ rule ASM_COMPILER__arch__arm__core_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__arch__arm__core_MinSizeRel
+rule C_COMPILER__arch__arm__core_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -166,7 +166,7 @@ rule C_COMPILER__arch__arm__core_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__arch__arm__core_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__arch__arm__core_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -175,7 +175,7 @@ rule C_STATIC_LIBRARY_LINKER__arch__arm__core_MinSizeRel
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__arch__arm__core__cortex_m_MinSizeRel
+rule ASM_COMPILER__arch__arm__core__cortex_m_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -185,7 +185,7 @@ rule ASM_COMPILER__arch__arm__core__cortex_m_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__arch__arm__core__cortex_m_MinSizeRel
+rule C_COMPILER__arch__arm__core__cortex_m_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -195,7 +195,7 @@ rule C_COMPILER__arch__arm__core__cortex_m_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__arch__arm__core__cortex_m_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__arch__arm__core__cortex_m_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -204,7 +204,7 @@ rule C_STATIC_LIBRARY_LINKER__arch__arm__core__cortex_m_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__arch__arm__core__mpu_MinSizeRel
+rule C_COMPILER__arch__arm__core__mpu_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -214,7 +214,7 @@ rule C_COMPILER__arch__arm__core__mpu_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__arch__arm__core__mpu_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__arch__arm__core__mpu_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -223,7 +223,7 @@ rule C_STATIC_LIBRARY_LINKER__arch__arm__core__mpu_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__libc__picolibc_MinSizeRel
+rule C_COMPILER__lib__libc__picolibc_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -233,7 +233,7 @@ rule C_COMPILER__lib__libc__picolibc_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__libc__picolibc_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__lib__libc__picolibc_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -242,7 +242,7 @@ rule C_STATIC_LIBRARY_LINKER__lib__libc__picolibc_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__libc__common_MinSizeRel
+rule C_COMPILER__lib__libc__common_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -252,7 +252,7 @@ rule C_COMPILER__lib__libc__common_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__libc__common_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__lib__libc__common_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -261,7 +261,7 @@ rule C_STATIC_LIBRARY_LINKER__lib__libc__common_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__posix__options_MinSizeRel
+rule C_COMPILER__lib__posix__options_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -271,7 +271,7 @@ rule C_COMPILER__lib__posix__options_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__posix__options_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__lib__posix__options_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -280,7 +280,7 @@ rule C_STATIC_LIBRARY_LINKER__lib__posix__options_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__lib__net_buf_MinSizeRel
+rule C_COMPILER__lib__net_buf_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -290,7 +290,7 @@ rule C_COMPILER__lib__net_buf_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__lib__net_buf_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__lib__net_buf_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -299,7 +299,7 @@ rule C_STATIC_LIBRARY_LINKER__lib__net_buf_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__soc__nordic_MinSizeRel
+rule C_COMPILER__soc__nordic_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -309,7 +309,7 @@ rule C_COMPILER__soc__nordic_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__soc__nordic_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__soc__nordic_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -318,7 +318,7 @@ rule C_STATIC_LIBRARY_LINKER__soc__nordic_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__random_MinSizeRel
+rule C_COMPILER__subsys__random_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -328,7 +328,7 @@ rule C_COMPILER__subsys__random_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__random_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__random_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -337,7 +337,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__random_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__bluetooth__common_MinSizeRel
+rule C_COMPILER__subsys__bluetooth__common_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -347,7 +347,7 @@ rule C_COMPILER__subsys__bluetooth__common_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__common_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__common_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -356,7 +356,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__common_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__bluetooth__host_MinSizeRel
+rule C_COMPILER__subsys__bluetooth__host_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -366,7 +366,7 @@ rule C_COMPILER__subsys__bluetooth__host_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__host_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__host_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -375,7 +375,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__host_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__bluetooth__shell_MinSizeRel
+rule C_COMPILER__subsys__bluetooth__shell_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -385,7 +385,7 @@ rule C_COMPILER__subsys__bluetooth__shell_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__shell_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__shell_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -394,7 +394,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__bluetooth__shell_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__net_MinSizeRel
+rule C_COMPILER__subsys__net_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -404,7 +404,7 @@ rule C_COMPILER__subsys__net_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__net_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__net_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -413,7 +413,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__net_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__net__ip_MinSizeRel
+rule C_COMPILER__subsys__net__ip_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -423,7 +423,7 @@ rule C_COMPILER__subsys__net__ip_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__net__ip_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__net__ip_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -432,7 +432,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__net__ip_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__subsys__net__lib__dhcpv4_MinSizeRel
+rule C_COMPILER__subsys__net__lib__dhcpv4_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -442,7 +442,7 @@ rule C_COMPILER__subsys__net__lib__dhcpv4_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__subsys__net__lib__dhcpv4_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__subsys__net__lib__dhcpv4_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -451,7 +451,7 @@ rule C_STATIC_LIBRARY_LINKER__subsys__net__lib__dhcpv4_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__interrupt_controller_MinSizeRel
+rule C_COMPILER__drivers__interrupt_controller_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -461,7 +461,7 @@ rule C_COMPILER__drivers__interrupt_controller_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__interrupt_controller_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__interrupt_controller_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -470,7 +470,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__interrupt_controller_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__usb__device_MinSizeRel
+rule C_COMPILER__drivers__usb__device_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -480,7 +480,7 @@ rule C_COMPILER__drivers__usb__device_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__usb__device_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__usb__device_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -489,7 +489,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__usb__device_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__usb__common__nrf_usbd_common_MinSizeRel
+rule C_COMPILER__drivers__usb__common__nrf_usbd_common_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -499,7 +499,7 @@ rule C_COMPILER__drivers__usb__common__nrf_usbd_common_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__usb__common__nrf_usbd_common_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__usb__common__nrf_usbd_common_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -508,7 +508,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__usb__common__nrf_usbd_common_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__bluetooth_MinSizeRel
+rule C_COMPILER__drivers__bluetooth_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -518,7 +518,7 @@ rule C_COMPILER__drivers__bluetooth_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__bluetooth_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__bluetooth_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -527,7 +527,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__bluetooth_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__clock_control_MinSizeRel
+rule C_COMPILER__drivers__clock_control_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -537,7 +537,7 @@ rule C_COMPILER__drivers__clock_control_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__clock_control_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__clock_control_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -546,7 +546,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__clock_control_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__console_MinSizeRel
+rule C_COMPILER__drivers__console_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -556,7 +556,7 @@ rule C_COMPILER__drivers__console_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__console_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__console_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -565,7 +565,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__console_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__entropy_MinSizeRel
+rule C_COMPILER__drivers__entropy_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -575,7 +575,7 @@ rule C_COMPILER__drivers__entropy_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__entropy_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__entropy_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -584,7 +584,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__entropy_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__gpio_MinSizeRel
+rule C_COMPILER__drivers__gpio_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -594,7 +594,7 @@ rule C_COMPILER__drivers__gpio_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__gpio_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__gpio_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -603,7 +603,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__gpio_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__hwinfo_MinSizeRel
+rule C_COMPILER__drivers__hwinfo_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -613,7 +613,7 @@ rule C_COMPILER__drivers__hwinfo_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__hwinfo_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__hwinfo_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -622,7 +622,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__hwinfo_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__led_MinSizeRel
+rule C_COMPILER__drivers__led_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -632,7 +632,7 @@ rule C_COMPILER__drivers__led_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__led_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__led_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -641,7 +641,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__led_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__pinctrl_MinSizeRel
+rule C_COMPILER__drivers__pinctrl_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -651,7 +651,7 @@ rule C_COMPILER__drivers__pinctrl_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__pinctrl_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__pinctrl_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -660,7 +660,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__pinctrl_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__serial_MinSizeRel
+rule C_COMPILER__drivers__serial_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -670,7 +670,7 @@ rule C_COMPILER__drivers__serial_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__serial_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__serial_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -679,7 +679,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__serial_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__drivers__timer_MinSizeRel
+rule C_COMPILER__drivers__timer_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -689,7 +689,7 @@ rule C_COMPILER__drivers__timer_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__drivers__timer_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__drivers__timer_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -698,7 +698,7 @@ rule C_STATIC_LIBRARY_LINKER__drivers__timer_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__lib__multithreading_lock_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__lib__multithreading_lock_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -708,7 +708,7 @@ rule C_COMPILER__.2e.2e__nrf__lib__multithreading_lock_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__lib__multithreading_lock_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__lib__multithreading_lock_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -717,7 +717,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__lib__multithreading_lock_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__subsys__bluetooth__controller_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__subsys__bluetooth__controller_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -727,7 +727,7 @@ rule C_COMPILER__.2e.2e__nrf__subsys__bluetooth__controller_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__bluetooth__controller_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__bluetooth__controller_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -736,7 +736,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__bluetooth__controller_MinSize
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__init_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__init_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -746,7 +746,7 @@ rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__init_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__init_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__init_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -755,7 +755,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__init_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__fem_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__fem_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -765,7 +765,7 @@ rule C_COMPILER__.2e.2e__nrf__subsys__mpsl__fem_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__fem_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__fem_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -774,7 +774,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__subsys__mpsl__fem_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__drivers__hw_cc3xx_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__drivers__hw_cc3xx_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -784,7 +784,7 @@ rule C_COMPILER__.2e.2e__nrf__drivers__hw_cc3xx_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__hw_cc3xx_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__hw_cc3xx_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -793,7 +793,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__hw_cc3xx_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__.2e.2e__nrf__drivers__mpsl__clock_control_MinSizeRel
+rule C_COMPILER__.2e.2e__nrf__drivers__mpsl__clock_control_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -803,7 +803,7 @@ rule C_COMPILER__.2e.2e__nrf__drivers__mpsl__clock_control_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__mpsl__clock_control_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__mpsl__clock_control_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -812,7 +812,7 @@ rule C_STATIC_LIBRARY_LINKER__.2e.2e__nrf__drivers__mpsl__clock_control_MinSizeR
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__modules__hal_nordic__nrfx_MinSizeRel
+rule C_COMPILER__modules__hal_nordic__nrfx_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -822,7 +822,7 @@ rule C_COMPILER__modules__hal_nordic__nrfx_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__modules__hal_nordic__nrfx_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__modules__hal_nordic__nrfx_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -831,7 +831,7 @@ rule C_STATIC_LIBRARY_LINKER__modules__hal_nordic__nrfx_MinSizeRel
 #############################################
 # Rule for compiling ASM files.
 
-rule ASM_COMPILER__c_MinSizeRel
+rule ASM_COMPILER__c_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -841,7 +841,7 @@ rule ASM_COMPILER__c_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__c_MinSizeRel
+rule C_COMPILER__c_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /usr/bin/ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -851,7 +851,7 @@ rule C_COMPILER__c_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__c_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__c_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT
@@ -860,7 +860,7 @@ rule C_STATIC_LIBRARY_LINKER__c_MinSizeRel
 #############################################
 # Rule for compiling C files.
 
-rule C_COMPILER__kernel_MinSizeRel
+rule C_COMPILER__kernel_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = ccache /home/apcave/stm32-tools/bin/arm-none-eabi-gcc $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -870,7 +870,7 @@ rule C_COMPILER__kernel_MinSizeRel
 #############################################
 # Rule for linking C static library.
 
-rule C_STATIC_LIBRARY_LINKER__kernel_MinSizeRel
+rule C_STATIC_LIBRARY_LINKER__kernel_Debug
   command = $PRE_LINK && ccache /usr/bin/cmake -E rm -f $TARGET_FILE && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ar qc $TARGET_FILE $LINK_FLAGS $in && ccache /home/apcave/stm32-tools/bin/arm-none-eabi-ranlib $TARGET_FILE && $POST_BUILD
   description = Linking C static library $TARGET_FILE
   restat = $RESTAT

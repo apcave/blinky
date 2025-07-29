@@ -15,7 +15,6 @@
             "svdFile": "${workspaceFolder}/.vscode/nrf52840.svd",
             "runToEntryPoint": "main",
             "showDevDebugOutput": "raw",
-            "preLaunchTask": "Build Blinky",
             "armToolchainPath": "/home/apcave/stm32-tools/bin",
             "gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb"
         },
@@ -34,6 +33,23 @@
             "showDevDebugOutput": "raw",
             "armToolchainPath": "/home/apcave/stm32-tools/bin",
             "gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb"
+        },
+        {
+            "name": "Debug nRF52840 (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "executable": "${workspaceFolder}/build/blinky/zephyr/zephyr.elf",
+            "device": "nRF52840_xxAA",
+            "configFiles": [
+                "${workspaceFolder}/openocd-pico-nrf52.cfg"
+            ],
+            "gdbTarget": "localhost:3333",
+            "showDevDebugOutput": "raw",            
+            "runToEntryPoint": "main",
+            "armToolchainPath": "/home/apcave/stm32-tools/bin",
+            "gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb"
         }
+
     ]
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+openocd -f interface/jlink.cfg -f target/nrf52.cfg -c "init; reset; exit"#!/bin/bash
 
 # Monitor script for nRF52840 using Raspberry Pi Pico probe
 echo "Starting debug monitor for nRF52840..."
