@@ -1,0 +1,28 @@
+{
+    "C_Cpp.default.compilerPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gcc",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/build/blinky/zephyr/include/generated",
+        "${workspaceFolder}/build/blinky/zephyr/include",
+        "/home/apcave/nordic/zephyr/include",
+        "/home/apcave/nordic/zephyr/include/zephyr",
+        "/home/apcave/nordic/zephyr/arch/arm/include",
+        "/home/apcave/nordic/zephyr/boards/seeed/xiao_ble",
+        "/home/apcave/stm32-tools/arm-none-eabi/include"
+    ],
+    "C_Cpp.default.defines": [
+        "CONFIG_BOARD_XIAO_BLE=1",
+        "CONFIG_SOC_NRF52840=1",
+        "CONFIG_ARM=1"
+    ],
+    "C_Cpp.default.cStandard": "c99",
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/build/blinky/compile_commands.json",
+    "cortex-debug.openocdPath": "openocd",
+    "cortex-debug.armToolchainPath": "/home/apcave/stm32-tools/bin",
+    "cortex-debug.gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb",
+    "files.associations": {
+        "*.dts": "dts",
+        "*.dtsi": "dts",
+        "*.overlay": "dts"
+    }
+}

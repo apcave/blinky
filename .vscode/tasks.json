@@ -1,0 +1,109 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Blinky",
+            "type": "shell",
+            "command": "/home/apcave/nordic/.venv/bin/west",
+            "args": ["build"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Clean Build",
+            "type": "shell",
+            "command": "/home/apcave/nordic/.venv/bin/west",
+            "args": ["build", "-t", "clean"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Flash via SWD",
+            "type": "shell",
+            "command": "bash",
+            "args": ["${workspaceFolder}/flash-swd.sh"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOn": "Build Blinky"
+        },
+        {
+            "label": "Flash via USB DFU",
+            "type": "shell",
+            "command": "bash",
+            "args": ["${workspaceFolder}/flash-usb.sh"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "dependsOn": "Build Blinky"
+        },
+        {
+            "label": "Connect to USB Console",
+            "type": "shell",
+            "command": "bash",
+            "args": ["${workspaceFolder}/usb-console.sh"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "isBackground": false,
+            "problemMatcher": []
+        },
+        {
+            "label": "Trigger DFU Mode",
+            "type": "shell",
+            "command": "bash",
+            "args": ["${workspaceFolder}/trigger-dfu.sh"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": []
+        },
+    ]
+}

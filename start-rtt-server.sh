@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Setting up RTT console for nRF52840..."
+
+# Create OpenOCD configuration for RTT
+cat > rtt-session.cfg << 'EOF'
+source [find interface/cmsis-dap.cfg]
+set WORKAREASIZE 0x40000
+set CHIPNAME nrf52
+source [find target/nrf52.cfg]
+
+# Enable RTT
+rtt setup 0x20000000 0x40000 "SEGGER RTT"
+
+$_TARGETNAME configure -event gdb-attach {
+    echo "GDB attached, starting RTT..."
+    halt
+    rtt start
+    resume
+}
+
+init
+reset run
+sleep 1000
+rtt start
+echo "RTT console ready. Connect with telnet localhost 9090"
+echo "Press Ctrl+C to stop"
+
+# Start RTT server on port 9090
+rtt server start 9090 0
+EOF
+
+# Start OpenOCD with RTT configuration
+echo "Starting OpenOCD with RTT support..."
+openocd -f rtt-session.cfg

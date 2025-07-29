@@ -1,0 +1,13 @@
+# Target labels
+ blinky
+# Source files and their labels
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/blinky
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/blinky.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/blinky-complete.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-build.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-configure.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-download.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-install.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-mkdir.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-patch.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/blinky-prefix/src/blinky-stamp/blinky-update.rule

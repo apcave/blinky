@@ -1,0 +1,45 @@
+#!/bin/bash
+
+echo "Starting RTT console connection..."
+
+# Create a temporary OpenOCD script for RTT debugging
+cat > rtt_debug.cfg << 'EOF'
+source [find interface/cmsis-dap.cfg]
+set WORKAREASIZE 0x40000
+set CHIPNAME nrf52
+source [find target/nrf52.cfg]
+
+init
+reset init
+
+# Flash if needed (uncomment if you want to reflash)
+# flash write_image erase build/blinky/zephyr/zephyr.hex
+
+# Start the target
+reset run
+
+# Wait for the target to initialize RTT
+sleep 2000
+
+# Try to find RTT control block
+echo "Searching for RTT control block..."
+rtt setup 0x20000000 0x40000 "SEGGER RTT"
+rtt start
+
+# Check RTT status
+rtt status
+
+# Read from RTT channel 0 in a loop
+echo "Starting RTT console..."
+while { 1 } {
+    set data [rtt read 0]
+    if { $data != "" } {
+        puts -nonewline $data
+        flush stdout
+    }
+    after 10
+}
+EOF
+
+# Run OpenOCD with the RTT debug script
+openocd -f rtt_debug.cfg

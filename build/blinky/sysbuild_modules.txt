@@ -1,0 +1,2 @@
+"nrf":"/home/apcave/nordic/nrf":"/home/apcave/nordic/nrf/sysbuild"
+"mcuboot":"/home/apcave/nordic/bootloader/mcuboot":"/home/apcave/nordic/bootloader/mcuboot/boot/zephyr/sysbuild"

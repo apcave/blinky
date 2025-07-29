@@ -1,0 +1,7 @@
+default: blinky
+build_dir: /home/apcave/nordic/blinky/build
+domains:
+  - name: blinky
+    build_dir: /home/apcave/nordic/blinky/build/blinky
+flash_order:
+  - blinky

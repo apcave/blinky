@@ -1,0 +1,42 @@
+#!/bin/bash
+
+echo "Connecting to RTT on running nRF52840..."
+
+# Create a simple RTT connection script
+cat > connect-rtt.cfg << 'EOF'
+source [find interface/cmsis-dap.cfg]
+set WORKAREASIZE 0x40000
+set CHIPNAME nrf52
+source [find target/nrf52.cfg]
+
+proc connect_rtt {} {
+    init
+    
+    # Don't reset, just attach to running target
+    halt
+    
+    # Try to find RTT control block in typical locations
+    echo "Searching for RTT control block..."
+    rtt setup 0x20000000 0x40000 "SEGGER RTT"
+    rtt start
+    
+    echo "RTT status:"
+    rtt status
+    
+    # Resume target
+    resume
+    
+    echo "Starting RTT server on port 9090..."
+    rtt server start 9090 0
+}
+
+# Connect to RTT
+connect_rtt
+
+# Keep running
+while { 1 } {
+    after 1000
+}
+EOF
+
+openocd -f connect-rtt.cfg

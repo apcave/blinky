@@ -1,0 +1,45 @@
+# Nordic/Zephyr Development Environment Configuration
+# Add this to your ~/.zshrc file
+
+# Function to automatically set up Nordic development environment
+setup_nordic_env() {
+    # Set up Nordic/Zephyr environment variables
+    export ZEPHYR_BASE="/home/apcave/nordic/zephyr"
+    export ZEPHYR_SDK_INSTALL_DIR="/home/apcave/stm32-tools"
+    
+    # Add West virtual environment to PATH
+    export PATH="/home/apcave/nordic/.venv/bin:$PATH"
+    
+    # Source the Zephyr environment if it exists
+    if [ -f "$ZEPHYR_BASE/zephyr-env.sh" ]; then
+        source "$ZEPHYR_BASE/zephyr-env.sh"
+    fi
+    
+    # Activate the Python virtual environment
+    if [ -f "/home/apcave/nordic/.venv/bin/activate" ]; then
+        source "/home/apcave/nordic/.venv/bin/activate"
+    fi
+    
+    echo "Nordic/Zephyr development environment activated!"
+}
+
+# Auto-activate when entering Nordic project directories
+auto_nordic_env() {
+    if [[ $PWD == /home/apcave/nordic* ]]; then
+        if [[ -z "$ZEPHYR_BASE" ]]; then
+            setup_nordic_env
+        fi
+    fi
+}
+
+# Hook to run on directory change
+chpwd_functions+=(auto_nordic_env)
+
+# Aliases for convenience
+alias nordic-env='setup_nordic_env'
+alias west-build='cd /home/apcave/nordic/blinky && west build'
+alias west-flash='cd /home/apcave/nordic/blinky && west flash'
+alias west-clean='cd /home/apcave/nordic/blinky && west build --pristine'
+
+# Run auto-detection on shell startup
+auto_nordic_env

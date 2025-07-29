@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+    },
+    "extensions": {
+        "recommendations": [
+            "marus25.cortex-debug",
+            "ms-vscode.cpptools",
+            "nordic-semiconductor.nrf-connect",
+            "nordic-semiconductor.nrf-kconfig",
+            "nordic-semiconductor.nrf-devicetree"
+        ]
+    }
+}

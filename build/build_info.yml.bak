@@ -1,0 +1,4 @@
+west:
+  command: /home/apcave/nordic/.venv/bin/west build -b xiao_ble --pristine
+  topdir: /home/apcave/nordic
+  version: 1.4.0

@@ -1,0 +1,39 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug nRF52840 (Pico Probe)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/blinky/zephyr/zephyr.elf",
+            "servertype": "openocd",
+            "configFiles": [
+                "${workspaceFolder}/.vscode/openocd-debug.cfg"
+            ],
+            "searchDir": [],
+            "svdFile": "${workspaceFolder}/.vscode/nrf52840.svd",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "raw",
+            "preLaunchTask": "Build Blinky",
+            "armToolchainPath": "/home/apcave/stm32-tools/bin",
+            "gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb"
+        },
+        {
+            "name": "Debug nRF52840 (Attach)",
+            "type": "cortex-debug",
+            "request": "attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/blinky/zephyr/zephyr.elf",
+            "servertype": "openocd",
+            "configFiles": [
+                "${workspaceFolder}/.vscode/openocd-debug.cfg"
+            ],
+            "searchDir": [],
+            "svdFile": "${workspaceFolder}/.vscode/nrf52840.svd",
+            "showDevDebugOutput": "raw",
+            "armToolchainPath": "/home/apcave/stm32-tools/bin",
+            "gdbPath": "/home/apcave/stm32-tools/bin/arm-none-eabi-gdb"
+        }
+    ]
+}

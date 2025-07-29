@@ -1,0 +1,50 @@
+cmake:
+  application:
+    configuration-dir: /home/apcave/nordic/blinky
+    source-dir: /home/apcave/nordic/blinky
+  board:
+    name: xiao_ble
+    qualifiers: nrf52840
+    revision: 
+  devicetree:
+    bindings-dirs:
+     - /home/apcave/nordic/nrf/dts/bindings
+     - /home/apcave/nordic/zephyr/dts/bindings
+    files:
+     - /home/apcave/nordic/zephyr/boards/seeed/xiao_ble/xiao_ble.dts
+     - /home/apcave/nordic/blinky/boards/xiao_ble.overlay
+    include-dirs:
+     - /home/apcave/nordic/nrf/include
+     - /home/apcave/nordic/nrf/dts
+     - /home/apcave/nordic/zephyr/include
+     - /home/apcave/nordic/zephyr/include/zephyr
+     - /home/apcave/nordic/zephyr/dts/common
+     - /home/apcave/nordic/zephyr/dts/x86
+     - /home/apcave/nordic/zephyr/dts/xtensa
+     - /home/apcave/nordic/zephyr/dts/sparc
+     - /home/apcave/nordic/zephyr/dts/riscv
+     - /home/apcave/nordic/zephyr/dts/posix
+     - /home/apcave/nordic/zephyr/dts/nios2
+     - /home/apcave/nordic/zephyr/dts/arm64
+     - /home/apcave/nordic/zephyr/dts/arm
+     - /home/apcave/nordic/zephyr/dts/arc
+     - /home/apcave/nordic/zephyr/dts
+    user-files:
+     - /home/apcave/nordic/blinky/boards/xiao_ble.overlay
+  kconfig:
+    files:
+     - /home/apcave/nordic/zephyr/boards/seeed/xiao_ble/xiao_ble_defconfig
+     - /home/apcave/nordic/blinky/prj.conf
+     - /home/apcave/nordic/blinky/build/blinky/zephyr/.config.sysbuild
+    user-files:
+     - /home/apcave/nordic/blinky/prj.conf
+  toolchain:
+    name: gnuarmemb
+    path: /home/apcave/stm32-tools
+  vendor-specific:
+    nordic:
+      svdfile: /home/apcave/nordic/modules/hal/nordic/nrfx/mdk/nrf52840.svd
+  zephyr:
+    version: 3.7.99
+    zephyr-base: /home/apcave/nordic/zephyr
+version: 0.1.0
