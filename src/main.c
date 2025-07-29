@@ -10,138 +10,11 @@
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/reboot.h>
 #include <zephyr/bluetooth/bluetooth.h>
+#include <zephyr/bluetooth/gap.h>
 #include <zephyr/bluetooth/gatt.h>
 #include <zephyr/bluetooth/uuid.h>
 
 LOG_MODULE_REGISTER(main);
-
-/* Bluetooth LE Data Streaming */
-#ifdef CONFIG_BT
-
-/* Custom service UUID: using simpler 16-bit UUID */
-#define BT_UUID_CUSTOM_SERVICE_VAL 0x1234
-#define BT_UUID_CUSTOM_SERVICE BT_UUID_DECLARE_16(BT_UUID_CUSTOM_SERVICE_VAL)
-
-/* Custom characteristic UUID for data streaming */
-#define BT_UUID_CUSTOM_DATA_VAL 0x1235
-#define BT_UUID_CUSTOM_DATA BT_UUID_DECLARE_16(BT_UUID_CUSTOM_DATA_VAL)
-
-static struct bt_conn *current_conn = NULL;
-
-/* GATT service definition */
-static ssize_t read_data(struct bt_conn *conn, const struct bt_gatt_attr *attr,
-                        void *buf, uint16_t len, uint16_t offset)
-{
-    const char *data = "Hello from nRF52840!";
-    return bt_gatt_attr_read(conn, attr, buf, len, offset, data, strlen(data));
-}
-
-static ssize_t write_data(struct bt_conn *conn, const struct bt_gatt_attr *attr,
-                         const void *buf, uint16_t len, uint16_t offset, uint8_t flags)
-{
-    LOG_INF("Received %d bytes via BLE", len);
-    return len;
-}
-
-BT_GATT_SERVICE_DEFINE(data_svc,
-    BT_GATT_PRIMARY_SERVICE(BT_UUID_CUSTOM_SERVICE),
-    BT_GATT_CHARACTERISTIC(BT_UUID_CUSTOM_DATA,
-                          BT_GATT_CHRC_READ | BT_GATT_CHRC_WRITE | BT_GATT_CHRC_NOTIFY,
-                          BT_GATT_PERM_READ | BT_GATT_PERM_WRITE,
-                          read_data, write_data, NULL),
-    BT_GATT_CCC(NULL, BT_GATT_PERM_READ | BT_GATT_PERM_WRITE),
-);
-
-static void connected(struct bt_conn *conn, uint8_t err)
-{
-    if (err) {
-        LOG_ERR("Connection failed (err %u)", err);
-        return;
-    }
-    
-    current_conn = bt_conn_ref(conn);
-    LOG_INF("BLE Connected");
-    printk("BLE device connected!\n");
-}
-
-static void disconnected(struct bt_conn *conn, uint8_t reason)
-{
-    if (current_conn) {
-        bt_conn_unref(current_conn);
-        current_conn = NULL;
-    }
-    LOG_INF("BLE Disconnected (reason %u)", reason);
-    printk("BLE device disconnected!\n");
-}
-
-BT_CONN_CB_DEFINE(conn_callbacks) = {
-    .connected = connected,
-    .disconnected = disconnected,
-};
-
-static const struct bt_data ad[] = {
-    BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
-    BT_DATA_BYTES(BT_DATA_UUID16_ALL, 0x34, 0x12), /* Little endian UUID */
-};
-
-static const struct bt_data sd[] = {
-    BT_DATA(BT_DATA_NAME_COMPLETE, "Zephyr Data Streamer", sizeof("Zephyr Data Streamer") - 1),
-};
-
-void stream_data(uint8_t *data, size_t len)
-{
-    if (!current_conn) {
-        LOG_WRN("No BLE connection");
-        printk("No BLE connection for streaming\n");
-        return;
-    }
-
-    const struct bt_gatt_attr *attr = &data_svc.attrs[2]; // Data characteristic
-    
-    int err = bt_gatt_notify(current_conn, attr, data, len);
-    if (err) {
-        LOG_ERR("Failed to send notification (err %d)", err);
-        printk("Failed to stream data (err %d)\n", err);
-    } else {
-        LOG_INF("Streamed %d bytes via BLE", len);
-        printk("Streamed %d bytes via BLE\n", len);
-    }
-}
-
-void data_streaming_init(void)
-{
-    int err;
-
-    err = bt_enable(NULL);
-    if (err) {
-        LOG_ERR("Bluetooth init failed (err %d)", err);
-        printk("Bluetooth init failed (err %d)\n", err);
-        return;
-    }
-
-    err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
-    if (err) {
-        LOG_ERR("Advertising failed to start (err %d)", err);
-        printk("Advertising failed to start (err %d)\n", err);
-        return;
-    }
-
-    LOG_INF("BLE advertising started");
-    printk("BLE advertising started - device discoverable as 'Zephyr Data Streamer'\n");
-}
-
-#else
-/* Dummy functions when Bluetooth is not enabled */
-void stream_data(uint8_t *data, size_t len)
-{
-    printk("BLE not enabled - would stream %d bytes\n", len);
-}
-
-void data_streaming_init(void)
-{
-    printk("BLE not enabled\n");
-}
-#endif
 
 /* 1000 msec = 1 sec */
 #define SLEEP_TIME_MS   1000
@@ -154,6 +27,40 @@ void data_streaming_init(void)
  * See the sample documentation for information on how to fix this.
  */
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
+
+/* Bluetooth advertising data */
+static const struct bt_data ad[] = {
+	BT_DATA_BYTES(BT_DATA_FLAGS, (BT_LE_AD_GENERAL | BT_LE_AD_NO_BREDR)),
+	BT_DATA(BT_DATA_NAME_COMPLETE, CONFIG_BT_DEVICE_NAME, sizeof(CONFIG_BT_DEVICE_NAME) - 1),
+};
+
+/* Bluetooth scan response data (optional additional info) */
+static const struct bt_data sd[] = {
+	BT_DATA_BYTES(BT_DATA_UUID16_ALL, BT_UUID_16_ENCODE(BT_UUID_GATT_VAL)),
+};
+
+/* Bluetooth ready callback */
+static void bt_ready_cb(int err)
+{
+	if (err) {
+		LOG_ERR("Bluetooth init failed (err %d)", err);
+		return;
+	}
+
+	LOG_INF("Bluetooth initialized");
+	printk("Bluetooth initialized successfully\n");
+
+	/* Start advertising */
+	err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+	if (err) {
+		LOG_ERR("Advertising failed to start (err %d)", err);
+		printk("ERROR: Failed to start advertising! err = %d\n", err);
+		return;
+	}
+
+	LOG_INF("Advertising successfully started");
+	printk("Bluetooth advertising started as '%s'\n", CONFIG_BT_DEVICE_NAME);
+}
 
 /* Shell command to control LED */
 static int cmd_led_on(const struct shell *shell, size_t argc, char **argv)
@@ -196,19 +103,36 @@ static int cmd_dfu_mode(const struct shell *shell, size_t argc, char **argv)
 	k_msleep(100); // Give time for message to be sent
 	
 	/* Reboot into DFU mode */
-	sys_reboot(SYS_REBOOT_COLD);
+	// sys_reboot(SYS_REBOOT_COLD);
 	
 	return 0;
 }
 
-static int cmd_stream_test(const struct shell *shell, size_t argc, char **argv)
+static int cmd_bt_start_adv(const struct shell *shell, size_t argc, char **argv)
 {
 	ARG_UNUSED(argc);
 	ARG_UNUSED(argv);
 	
-	uint8_t test_data[] = "Hello from nRF52840! This is a streaming test.";
-	stream_data(test_data, sizeof(test_data) - 1); // -1 to exclude null terminator
-	shell_print(shell, "Test data streamed");
+	int err = bt_le_adv_start(BT_LE_ADV_CONN_NAME, ad, ARRAY_SIZE(ad), sd, ARRAY_SIZE(sd));
+	if (err) {
+		shell_print(shell, "Failed to start advertising (err %d)", err);
+	} else {
+		shell_print(shell, "Advertising started as '%s'", CONFIG_BT_DEVICE_NAME);
+	}
+	return 0;
+}
+
+static int cmd_bt_stop_adv(const struct shell *shell, size_t argc, char **argv)
+{
+	ARG_UNUSED(argc);
+	ARG_UNUSED(argv);
+	
+	int err = bt_le_adv_stop();
+	if (err) {
+		shell_print(shell, "Failed to stop advertising (err %d)", err);
+	} else {
+		shell_print(shell, "Advertising stopped");
+	}
 	return 0;
 }
 
@@ -218,9 +142,16 @@ SHELL_STATIC_SUBCMD_SET_CREATE(sub_led,
 	SHELL_CMD(toggle, NULL, "Toggle LED", cmd_led_toggle),
 	SHELL_SUBCMD_SET_END /* Array terminated. */
 );
+
+// SHELL_STATIC_SUBCMD_SET_CREATE(sub_bt,
+//     SHELL_CMD(start, NULL, "Start advertising", cmd_bt_start_adv),
+//     SHELL_CMD(stop, NULL, "Stop advertising", cmd_bt_stop_adv),
+//     SHELL_SUBCMD_SET_END /* Array terminated. */
+// );
+
 SHELL_CMD_REGISTER(led, &sub_led, "LED commands", NULL);
+// SHELL_CMD_REGISTER(bt, &sub_bt, "Bluetooth commands", NULL);
 SHELL_CMD_REGISTER(dfu, NULL, "Enter DFU mode for USB flashing", cmd_dfu_mode);
-SHELL_CMD_REGISTER(stream, NULL, "Test data streaming", cmd_stream_test);
 
 int main(void)
 {
@@ -245,9 +176,14 @@ int main(void)
 
 	printk("LED pin configured successfully\n");
 
-	/* Initialize data streaming */
-	data_streaming_init();
-	printk("Data streaming initialized\n");
+	/* Initialize Bluetooth */
+	ret = bt_enable(bt_ready_cb);
+	if (ret) {
+		LOG_ERR("Bluetooth init failed (err %d)", ret);
+		printk("ERROR: Bluetooth initialization failed! ret = %d\n", ret);
+	} else {
+		printk("Bluetooth initialization started...\n");
+	}
 
 	LOG_INF("LED blink example started");
 	printk("Hello from nRF52840! LED blink starting...\n");
@@ -260,8 +196,8 @@ int main(void)
 			return 0;
 		}
 		
-		LOG_INF("LED toggled");
-		printk("LED toggled\n");
+		// LOG_INF("LED toggled");
+		// printk("LED toggled\n");
 		k_msleep(SLEEP_TIME_MS);
 	}
 	

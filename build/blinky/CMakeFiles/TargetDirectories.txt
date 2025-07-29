@@ -743,6 +743,12 @@
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bluetooth/host_extensions/CMakeFiles/install.dir
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bluetooth/host_extensions/CMakeFiles/install/local.dir
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bluetooth/host_extensions/CMakeFiles/install/strip.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/edit_cache.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/rebuild_cache.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/list_install_components.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/install.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/install/local.dir
+/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/CMakeFiles/install/strip.dir
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/net/CMakeFiles/edit_cache.dir
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/net/CMakeFiles/rebuild_cache.dir
 /home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/net/CMakeFiles/list_install_components.dir

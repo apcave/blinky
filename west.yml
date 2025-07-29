@@ -1,0 +1,3 @@
+runner:
+  openocd:
+    args: ["-f", "openocd-pico-nrf52.cfg"]

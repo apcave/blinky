@@ -19,7 +19,7 @@ config:
   # Build outputs:
   elf_file: zephyr.elf
   hex_file: /home/apcave/nordic/blinky/build/merged.hex
-  bin_file: zephyr.bin
+  bin_file: /home/apcave/nordic/blinky/build/blinky/zephyr/zephyr.signed.bin
   uf2_file: zephyr.uf2
   # Host tools:
   gdb: /home/apcave/stm32-tools/bin/arm-none-eabi-gdb

@@ -7,9 +7,13 @@
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/sysbuild_menuconfig.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/sysbuild_guiconfig.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/config-twister.dir
+/home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/mcuboot_cache.dir
+/home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/mcuboot_devicetree_target.dir
+/home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/mcuboot_extra_byproducts.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/blinky_cache.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/blinky_devicetree_target.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/blinky_extra_byproducts.dir
+/home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/dfu_application_zip.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/partition_manager.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/merged_hex.dir
 /home/apcave/nordic/blinky/build/_sysbuild/CMakeFiles/partition_manager_report.dir
@@ -21,6 +25,10 @@
 /home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/blinky.dir
 /home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/edit_cache.dir
 /home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/CMakeFiles/rebuild_cache.dir
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot_menuconfig.dir
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot_hardenconfig.dir
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot_guiconfig.dir
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot.dir
 /home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/edit_cache.dir
 /home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/rebuild_cache.dir
 /home/apcave/nordic/blinky/build/modules/nrf/CMakeFiles/edit_cache.dir

@@ -44,6 +44,12 @@ BYPRODUCT_KERNEL_ELF_NAME:FILEPATH=/home/apcave/nordic/blinky/build/blinky/zephy
 //Kernel hex file
 BYPRODUCT_KERNEL_HEX_NAME:FILEPATH=/home/apcave/nordic/blinky/build/blinky/zephyr/zephyr.hex
 
+//Signed kernel bin file
+BYPRODUCT_KERNEL_SIGNED_BIN_NAME:FILEPATH=/home/apcave/nordic/blinky/build/blinky/zephyr/zephyr.signed.bin
+
+//Signed kernel hex file
+BYPRODUCT_KERNEL_SIGNED_HEX_NAME:FILEPATH=/home/apcave/nordic/blinky/build/blinky/zephyr/zephyr.signed.hex
+
 //Kernel uf2 file
 BYPRODUCT_KERNEL_UF2_NAME:FILEPATH=/home/apcave/nordic/blinky/build/blinky/zephyr/zephyr.uf2
 
@@ -127,8 +133,8 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
-//C compiler
-CMAKE_C_COMPILER:STRING=/home/apcave/stm32-tools/bin/arm-none-eabi-gcc
+//Path to a program.
+CMAKE_C_COMPILER:FILEPATH=/home/apcave/stm32-tools/bin/arm-none-eabi-gcc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -463,6 +469,9 @@ blinky_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 blinky_SOURCE_DIR:STATIC=/home/apcave/nordic/blinky
 
+//imgtool sign sysbuild replacement
+imgtool_sign_sysbuild:STRING=--slot-size;0x7a000;--pad-header;--header-size;0x200
+
 
 ########################
 # INTERNAL cache entries
@@ -472,6 +481,7 @@ blinky_SOURCE_DIR:STATIC=/home/apcave/nordic/blinky
 BOARD_DIRECTORIES:INTERNAL=/home/apcave/nordic/zephyr/boards/seeed/xiao_ble
 //DT bindings root directories
 CACHED_DTS_ROOT_BINDINGS:INTERNAL=/home/apcave/nordic/nrf/dts/bindings;/home/apcave/nordic/zephyr/dts/bindings
+CLI_CONFIG_BOOTLOADER_MCUBOOT:INTERNAL=y
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -523,8 +533,6 @@ CMAKE_CXX_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
 CMAKE_CXX_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_CXX_FLAGS_RELWITHDEBINFO
 CMAKE_CXX_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CMAKE_C_COMPILER
-CMAKE_C_COMPILER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_AR
 CMAKE_C_COMPILER_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_C_COMPILER_RANLIB
@@ -581,7 +589,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=233
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=234
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -721,6 +729,8 @@ _Python3_EXECUTABLE:INTERNAL=/home/apcave/nordic/.venv/bin/python
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;2;64;;cpython-311-x86_64-linux-gnu;/usr/lib/python3.11;/usr/lib/python3.11;/home/apcave/nordic/.venv/lib/python3.11/site-packages;/home/apcave/nordic/.venv/lib/python3.11/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=9c20ffe7bf3ed2cad4052608f1f2e6dd
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
 //Result of TRY_COMPILE

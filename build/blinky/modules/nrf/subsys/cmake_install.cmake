@@ -44,6 +44,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
+  include("/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/bootloader/bl_override/cmake_install.cmake")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
   include("/home/apcave/nordic/blinky/build/blinky/modules/nrf/subsys/net/cmake_install.cmake")
 endif()
 

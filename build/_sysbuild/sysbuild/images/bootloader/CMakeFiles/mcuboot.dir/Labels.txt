@@ -1,0 +1,13 @@
+# Target labels
+ mcuboot
+# Source files and their labels
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/CMakeFiles/mcuboot-complete.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-build.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-configure.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-download.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-install.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-mkdir.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-patch.rule
+/home/apcave/nordic/blinky/build/_sysbuild/sysbuild/images/bootloader/mcuboot-prefix/src/mcuboot-stamp/mcuboot-update.rule

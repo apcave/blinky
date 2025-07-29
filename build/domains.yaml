@@ -3,5 +3,7 @@ build_dir: /home/apcave/nordic/blinky/build
 domains:
   - name: blinky
     build_dir: /home/apcave/nordic/blinky/build/blinky
+  - name: mcuboot
+    build_dir: /home/apcave/nordic/blinky/build/mcuboot
 flash_order:
   - blinky

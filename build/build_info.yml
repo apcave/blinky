@@ -8,9 +8,9 @@ cmake:
   kconfig:
     files:
      - /home/apcave/nordic/blinky/build/_sysbuild/empty.conf
-     - /home/apcave/nordic/blinky/build/_sysbuild/empty.conf
+     - /home/apcave/nordic/blinky/sysbuild.conf
     user-files:
-     - /home/apcave/nordic/blinky/build/_sysbuild/empty.conf
+     - /home/apcave/nordic/blinky/sysbuild.conf
   sysbuild: true
 version: 0.1.0
 west:
